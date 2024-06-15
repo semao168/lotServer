@@ -36,7 +36,7 @@ echo "Number of cores      : $cores"
 next
 
 if [ "$CentOS_RHEL_version" -eq 6 ];then
-rpm -ivh rpm -ivh https://github.com/fei5seven/lotServer/releases/download/0.0.1/kernel-ml-firmware-4.9.7-1.el6.elrepo.noarch.rpm
+rpm -ivh rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-ml-firmware-4.9.7-1.el6.elrepo.noarch.rpm
 rpm -ivh rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-3.10.0-957.el7.x86_64.rpm --force
 number=$(cat /boot/grub/grub.conf | awk '$1=="title" {print i++ " : " $NF}'|grep '4.9.7-1'|awk '{print $1}')
 sed -i "s/^default=.*/default=$number/g" /boot/grub/grub.conf
