@@ -1,9 +1,12 @@
 ## 用户安装  
 
 
-修改内核
-
+ > 更换安装（更换锐速内核）
+```
 yum install wget -y && wget --no-check-certificate -O centos_kernel.sh https://raw.githubusercontent.com/semao168/lotServer/main/centos_kernel.sh && bash centos_kernel.sh
+```
+
+
 
 
  ~~（脚本内置许可证的接口为我自己的接口了，有效期9999年那种 笑）~~
