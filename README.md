@@ -3,7 +3,7 @@
 
  > 更换安装（更换锐速内核）
 ```
-yum install wget -y && wget --no-check-certificate -O ruisu.sh https://raw.githubusercontent.com/semao168/lotServer/main/ruisul.sh && bash ruisu.sh
+yum install wget -y && wget --no-check-certificate -O ruisu.sh https://raw.githubusercontent.com/semao168/lotServer/main/ruisu.sh && bash ruisu.sh
 ```
 
 
