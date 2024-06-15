@@ -33,14 +33,14 @@ bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/12655
 - 重新启动 /appex/bin/lotServer.sh restart
 ***
 ***
- > Centos 7开机启动
+## Centos 7开机启动
 ```
 echo "/usr/bin/sh /appex/bin/lotServer.sh start" >> /etc/rc.d/rc.local
 ```
 
-CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
+## CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
 
-支持KVM VMWARE Hyper-v XEN 虚拟化技术
+ 支持KVM VMWARE Hyper-v XEN 虚拟化技术
 
 CentOS6和CentOS7 一键更换内核，完成后会重启
 ```
