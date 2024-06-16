@@ -12,17 +12,17 @@ yum install wget -y && wget --no-check-certificate -O ruisu.sh https://raw.githu
  ~~（脚本内置许可证的接口为我自己的接口了，有效期9999年那种 笑）~~
  > 常规自动安装（推荐，自动检测内核）
 ```
-bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/1265578519/lotServer/main/lotServerInstall.sh) install
+bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao168/lotServer/main/lotServerInstall.sh) install
 ```
 
  > 指定内核安装（centos6选2.6.32-754.el6.x86_64，centos7选3.10.0-957.el7.x86_64）
 ```
-bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/1265578519/lotServer/main/lotServerInstall.sh) install 2.6.32-754.el6.x86_64
+bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao168/lotServer/main/lotServerInstall.sh) install 2.6.32-754.el6.x86_64
 ```
 
  > 完全卸载
 ```
-bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/1265578519/lotServer/main/lotServerInstall.sh) uninstall
+bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao168/lotServer/main/lotServerInstall.sh) uninstall
 ```
 ***
 ***
