@@ -1,0 +1,132 @@
+;=========================================================================
+; LEGALESE:   Copyright (c) 2010, AppEx Networks.
+;
+; This source code is confidential, proprietary, and contains trade
+; secrets that are the sole property of AppEx Networks.
+; Copy and/or distribution of this source code or disassembly or reverse
+; engineering of the resultant object code are strictly forbidden without
+; the written consent of AppEx Networks LLC.
+;
+;-------------------------------------------------------------------------
+; FILE NAME :       appexLwf.inf
+;
+; DESCRIPTION :     NDIS 6 LWF inf file.
+;
+; AUTHOR :          hao zhuang
+;
+; HISTORY :         hao     12/09/2010  created
+;=========================================================================
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = NetService
+ClassGUID   = {4D36E974-E325-11CE-BFC1-08002BE10318}
+Provider    = %APX%
+DriverVer   = 09/11/2015,3.11.12.3
+CatalogFile = appexdrv.cat
+
+
+[Manufacturer]
+%APX% = APPEX,NTx86,NTia64,NTamd64
+
+[APPEX.NTx86]
+%APPEX_ACC_DESC% = APPEX_INSTALL, appex_acc
+
+[APPEX.NTia64]
+%APPEX_ACC_DESC% = APPEX_INSTALL, appex_acc
+
+[APPEX.NTamd64]
+%APPEX_ACC_DESC% = APPEX_INSTALL, appex_acc
+
+[APPEX_INSTALL]
+AddReg           = APPEX_INSTALL_NDI
+Characteristics  = 0x40000 ; NCF_LW_FILTER
+NetCfgInstanceId = "{767f4aed-980d-4905-8dc2-8b3a33e16fd6}"
+CopyFiles        = APPEX_ACC.Files
+
+
+; ----------------------------------------------------------------------
+; filter uninstall
+; ----------------------------------------------------------------------
+
+[APPEX_INSTALL.Remove]
+DelService       = APXACC, 0x200 ; SPSVCINST_STOPSERVICE
+DelFiles         = APPEX_ACC.Files
+
+
+; ----------------------------------------------------------------------
+; file copy
+; ----------------------------------------------------------------------
+
+[SourceDisksNames]
+1 = %APPEX_ACC_DISK_DESC%,"",,
+
+[SourceDisksFiles]
+appexDrv.sys = 1
+
+[DestinationDirs]
+DefaultDestDir   = 12
+APPEX_ACC.Files  = 12 ; %windir%\System32\drivers
+
+[APPEX_ACC.Files]
+appexDrv.sys,,,2
+
+
+; ----------------------------------------------------------------------
+; filter install
+; ----------------------------------------------------------------------
+
+[APPEX_INSTALL_NDI]
+HKR, Ndi,            Service,                     , "APXACC"
+HKR, Ndi,            CoServices,        0x00010000, "APXACC"
+HKR, Ndi,            HelpText,                    , %APPEX_ACC_HELP%
+HKR, Ndi,            FilterClass,                 , loadbalance
+HKR, Ndi,            FilterType,        0x00010001, 0x00000002
+HKR, Ndi,            FilterRunType,     0x00010001, 0x00000002
+HKR, Ndi\Interfaces, UpperRange,                  , "noupper"
+HKR, Ndi\Interfaces, LowerRange,                  , "nolower"
+HKR, Ndi\Interfaces, FilterMediaTypes,            , "ethernet, ppip, wan"
+
+
+; ----------------------------------------------------------------------
+; service install
+; ----------------------------------------------------------------------
+
+[APPEX_INSTALL.Services]
+AddService = APXACC, , APPEX_INSTALL_SERVICE, APPEX_INSTALL_EVENT_LOG, System
+
+[APPEX_INSTALL_SERVICE]
+DisplayName    = %APPEX_ACC_SERVICE_NAME%
+ServiceType    = 1 ; SERVICE_KERNEL_DRIVER
+StartType      = 2 ; SERVICE_AUTO_START
+ErrorControl   = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\appexDrv.sys
+LoadOrderGroup = NDIS
+Description    = %APPEX_ACC_SERVICE_DESC%
+
+
+; ----------------------------------------------------------------------
+; event log install
+; ----------------------------------------------------------------------
+
+[APPEX_INSTALL_EVENT_LOG]
+AddReg = APPEX_INSTALL_EVENT_LOG.AddReg
+
+[APPEX_INSTALL_EVENT_LOG.AddReg]
+HKR,,CategoryCount,0x00010001,1
+HKR,,CategoryMessageFile,0x00020000,"%%SystemRoot%%\System32\drivers\appexDrv.sys"
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\drivers\appexDrv.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+; ----------------------------------------------------------------------
+; strings
+; ----------------------------------------------------------------------
+
+[Strings]
+APX = "AppEx Networks"
+APPEX_ACC_DESC = "AppEx Networks Accelerator"
+APPEX_ACC_HELP = "AppEx Networks Accelerator boosts your Internet access performance."
+APPEX_ACC_DISK_DESC = "AppEx Networks Accelerator Setup Disk"
+APPEX_ACC_SERVICE_NAME = "AppEx Networks Accelerator LWF"
+APPEX_ACC_SERVICE_DESC = "AppEx Networks Accelerator NDIS Light-Weighted Filter Driver"

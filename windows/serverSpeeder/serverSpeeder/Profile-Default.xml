@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+******************************************************************************
+* Copyright (c) AppEx Networks. All Rights Reserved.
+*
+* This profile contains default settings for AppEx Bandwidth Console, AppEx
+* Accelerator, etc. to determine how the network traffic of the applications
+* and URLs will be treated.
+*
+* MODIFICATIONS OF THIS FILE BY THE END USERS ARE STRONGLY DISCOURAGED AND
+* WILL UNCONDITIONALLY VOID THEIR TECHNICAL SUPPORT ENTITLEMENTS.
+*
+******************************************************************************
+-->
+
+<profiles>
+
+    <profile
+        name="AQS Factory Default Profile"
+        description="Default traffic treatment for apps/URLs."
+        author="AppEx Networks Corporation">
+
+        <map type="app">
+            <treat priority="3" target="Skype.exe" />
+            <treat priority="3" target="Microsoft.SkypeApp" />
+            <treat priority="3" target="msnmsgr.exe" />
+            <treat priority="2" target="outlook.exe" />
+        </map>
+
+        <map type="url">
+            <treat priority="3" target="youtube.com" />
+            <treat priority="3" target="netflix.com" />
+            <treat priority="3" target="TuDou.com" disabled="true" />
+        </map>
+
+        <map type="content-type">
+            <treat priority="2" target="video" />
+            <treat priority="2" target="audio" />
+        </map>
+
+    </profile>
+
+</profiles>

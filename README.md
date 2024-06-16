@@ -35,7 +35,9 @@ bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/12655
 ***
 ## Centos 7开机启动
 ```
-echo "/usr/bin/sh /appex/bin/lotServer.sh start" >> /etc/rc.d/rc.local
+
+echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
 ```
 
 ## CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
