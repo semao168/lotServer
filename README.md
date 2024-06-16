@@ -33,11 +33,13 @@ bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao
 - 重新启动 /appex/bin/lotServer.sh restart
 ***
 ***
-## Centos 7开机启动
+## Centos 7开机启动  和设置默认内核
 ```
 
 echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
+
+grubby --set-default /boot/vmlinuz-3.10.0-229.1.2.el7.x86_64
 ```
 
 ## CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
