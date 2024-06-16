@@ -1,0 +1,48 @@
+安装和配置
+上传到要做中转的服务器，然后使用 unzip 解压：
+
+# 下载，以 x86_64 版本为例
+wget "https://dl.goedge.cloud/edge-forward/v1.0.0/edge-forward-linux-amd64-v1.0.0.zip"
+​
+# 解压
+unzip -o edge-forward-linux-amd64-v1.0.0.zip
+​
+# 进入到 edge-forward 目录
+cd edge-forward/
+​
+# 复制配置
+cp configs/forward.template.yaml configs/forward.yaml
+​
+# 修改配置
+vi configs/forward.yaml
+在 forward.yaml 中的配置说明：
+
+rules - 规则列表
+src - 当前中转服务端端口
+dest - 目标服务主机地址和端口，如果是做API节点中转，那么这里就是API节点（非管理系统）的主机地址和端口，默认是管理系统IP:8001
+单个规则的例子：
+
+rules:
+  - src: 8001
+    dest: 192.168.1.100:8001
+多个规则的例子：
+
+rules:
+  - src: 8001
+    dest: 192.168.1.100:8001
+  - src: 8002
+    dest: 192.168.1.101:8001
+配置完成后，可以使用以下命令对配置进行简单的测试：
+
+bin/edge-forward test
+bin/edge-forward test
+启动
+可以使用以下命令启动：
+
+bin/edge-forward start
+启动后可以在 logs/run.log 中查看是否有异常。
+
+每次修改配置后，都要重新启动才会生效：
+
+bin/edge-forward restart
+bin/edge-forward restart
