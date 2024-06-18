@@ -89,6 +89,9 @@ function Install()
   wget --no-check-certificate -qO "/tmp/lotServer.tar" "https://raw.githubusercontent.com/semao168/lotServer/main/lotServer.tar"
   tar -xvf "/tmp/lotServer.tar" -C /tmp
   acce_ver=$(acce_check ${KNV})
+
+  echo "acce_ver:${acce_ver}  MAC:${Mac}"
+
   # 如果有自己搭建的或者api失效，这里修改成你自己的api
   wget --no-check-certificate -qO "${AcceTmp}/etc/apx.lic" "http://103.144.149.225/keygen.php?ver=${acce_ver}&mac=${Mac}"
   [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "Error! I can not generate the Lic for you, Please try again later. "
