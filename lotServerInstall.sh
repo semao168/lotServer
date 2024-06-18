@@ -105,8 +105,6 @@ function Install()
     bash /appex/bin/serverSpeeder.sh status
   elif [ -f /appex/bin/lotServer.sh ]; then
     bash /appex/bin/lotServer.sh status
-    echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
-    chmod +x /etc/rc.d/rc.local
   fi
   exit 0
 }
