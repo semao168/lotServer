@@ -1,0 +1,65 @@
+#!/bin/bash
+
+#关闭防火墙和selinux
+
+echo '目前正在关闭防火墙和selinux~'
+
+systemctl stop firewalld
+
+systemctl disable firewalld
+
+setenforce 0
+
+#配置静态IP
+
+echo '================================================================================================='
+
+echo '正在配置静态IP~'
+
+#获取网卡名
+
+enp=$( ls /etc/sysconfig/network-scripts/|egrep ifcfg |grep en.*|awk -F"-" '{print $2}')
+
+#获取网卡路径
+
+enpway=/etc/sysconfig/network-scripts/ifcfg-$enp
+
+#获取IP
+
+ip=`ip addr|grep inet|grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}'|grep -v 127.0.0.1|head -n 1`
+
+#获取路由
+
+#若没有安装netstat，可使用命令'yum -y install net-tools'来安装
+
+ga=$(netstat -rn|head -3|tail -1|awk -F" " '{print $2}')
+
+#替换文件内容
+
+sed -i 's/dhcp/static/g' $enpway
+
+sed -i '/ONBOOT/c ONBOOT=yes' $enpway
+
+#追加配置内容
+
+cat >>/etc/sysconfig/network-scripts/ifcfg-$enp <<EOF
+
+NM_CONTROLLED=no
+
+IPADDR=$ip
+
+GATEWAY=$ga
+
+NETMASK=255.255.255.0
+
+DNS1=223.5.5.5
+
+DNS2=8.8.8.8
+
+EOF
+
+echo '正在重启网卡，请稍后~'
+
+systemctl restart network
+
+echo '================================================================================================='

@@ -1,12 +1,12 @@
 ## 用户安装  
-
+ddd
 
  > 更换安装（更换锐速内核）
 ```
 yum install wget -y && wget --no-check-certificate -O ruisu.sh https://raw.githubusercontent.com/semao168/lotServer/main/ruisu.sh && bash ruisu.sh
 ```
 
-
+  
 
 
  ~~（脚本内置许可证的接口为我自己的接口了，有效期9999年那种 笑）~~
