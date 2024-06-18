@@ -1,0 +1,6 @@
+#!/bin/bash
+yum install unzip -y
+wget "https://dl.goedge.cloud/edge-forward/v1.0.0/edge-forward-linux-amd64-v1.0.0.zip"
+cd edge-forward/
+cp configs/forward.template.yaml configs/forward.yaml
+vi configs/forward.yaml
