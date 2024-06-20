@@ -12,9 +12,6 @@ yum install wget -y && wget -O sshd.sh "https://raw.githubusercontent.com/semao1
 yum install wget -y && wget -O tcp.sh "https://raw.githubusercontent.com/semao168/lotServer/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
 
-  
-
-
  ~~（脚本内置许可证的接口为我自己的接口了，有效期9999年那种 笑）~~
  > 常规自动安装（推荐，自动检测内核）
 ```
@@ -37,21 +34,11 @@ bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao
 - 停止加速 /appex/bin/lotServer.sh stop
 - 状态查询 /appex/bin/lotServer.sh status
 - 重新启动 /appex/bin/lotServer.sh restart
-- 双持bbr+锐速
-bbr 添加
-```
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/99-sysctl.conf
-
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/99-sysctl.conf
-
-sysctl -p
-```
 
 ***
 ***
-## Centos 7开机启动  和设置默认内核
+## Centos 7开机启动
 ```
-
 echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 ```
