@@ -54,8 +54,6 @@ sysctl -p
 
 echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
-
-grubby --set-default /boot/vmlinuz-3.10.0-229.1.2.el7.x86_64
 ```
 
 ## CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
