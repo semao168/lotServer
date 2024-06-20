@@ -736,6 +736,8 @@ startlotserver() {
   #bash <(wget -qO- https://git.io/lotServerInstall.sh) install
   echo | bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao168/lotServer/main/lotServerInstall.sh) install
   #echo | bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/fei5seven/lotServer/master/lotServerInstall.sh) install
+  echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/99-sysctl.conf
+  echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/99-sysctl.conf
   start_menu
 }
 

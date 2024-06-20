@@ -1,6 +1,26 @@
 #!/bin/bash
 yum install unzip -y
+# 下载，以 x86_64 版本为例
 wget "https://dl.goedge.cloud/edge-forward/v1.0.0/edge-forward-linux-amd64-v1.0.0.zip"
+
+# 解压
+unzip -o edge-forward-linux-amd64-v1.0.0.zip
+
+# 进入到 edge-forward 目录
 cd edge-forward/
+
+# 复制配置
 cp configs/forward.template.yaml configs/forward.yaml
+
+# 修改配置
 vi configs/forward.yaml
+
+
+启动
+可以使用以下命令启动：
+
+/root/edge-forward/bin/edge-forward restart
+
+
+echo "/root/edge-forward/bin/edge-forward restart" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local

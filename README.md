@@ -30,6 +30,16 @@ bash <(wget --no-check-certificate -qO-  https://raw.githubusercontent.com/semao
 - 停止加速 /appex/bin/lotServer.sh stop
 - 状态查询 /appex/bin/lotServer.sh status
 - 重新启动 /appex/bin/lotServer.sh restart
+- 双持bbr+锐速
+bbr 添加
+```
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/99-sysctl.conf
+
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/99-sysctl.conf
+
+sysctl -p
+```
+
 ***
 ***
 ## Centos 7开机启动  和设置默认内核
