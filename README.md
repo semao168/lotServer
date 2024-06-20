@@ -1,5 +1,12 @@
 ## 用户安装  
 
+ > 修改SSH端口
+```
+yum install wget -y && wget -O sshd.sh "https://raw.githubusercontent.com/semao168/lotServer/main/sshd.sh" && chmod +x tcp.sh && ./sshd.sh
+```
+
+
+
  > 更换安装（更换锐速内核）
 ```
 yum install wget -y && wget -O tcp.sh "https://raw.githubusercontent.com/semao168/lotServer/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh

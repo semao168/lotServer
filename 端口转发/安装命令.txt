@@ -24,3 +24,5 @@ vi configs/forward.yaml
 
 echo "/root/edge-forward/bin/edge-forward restart" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
+
+edge-node uninstall
