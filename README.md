@@ -2,7 +2,7 @@
 
  > 更换安装（更换锐速内核）
 ```
-yum install wget -y && wget -O tcp.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+yum install wget -y && wget -O tcp.sh "https://raw.githubusercontent.com/semao168/lotServer/main/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
 
   
