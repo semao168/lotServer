@@ -1,9 +1,8 @@
 ## 用户安装  
-ddd
 
  > 更换安装（更换锐速内核）
 ```
-yum install wget -y && wget --no-check-certificate -O ruisu.sh https://raw.githubusercontent.com/semao168/lotServer/main/ruisu.sh && bash ruisu.sh
+yum install wget -y && wget -O tcp.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
 
   
