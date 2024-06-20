@@ -16,7 +16,7 @@ export PATH
 # PLAIN='\033[0m'
 
 sh_ver="100.0.2.6"
-github="raw.githubusercontent.com/semao168/main"
+github="raw.githubusercontent.com/semao168/lotServer/main/"
 
 imgurl=""
 headurl=""
