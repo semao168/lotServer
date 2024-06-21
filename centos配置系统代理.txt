@@ -1,0 +1,32 @@
+可通过配置系统全局代理来提升速度，本文仅做客户端设置教程，具体代理服务器搭建请参考其他文章。
+
+本文所用CentOS为：CentOS Linux release 7.6.1810 (Core)
+
+进入profile修改配置
+
+su root
+vi /etc/profile
+在第一行加入以下内容
+
+export proxy="http://192.168.1.2:12345"
+export http_proxy=$proxy
+export https_proxy=$proxy
+export ftp_proxy=$proxy
+export no_proxy="localhost, 127.0.0.1, ::1"
+其中第一行的ip和端口号根据自己的代理服务器具体配置更改，保存退出后，source一下
+
+source /etc/profile
+此时已经可以上外网了，可以用wget测试一下
+
+wget www.google.com
+如果在当前目录下成功下载了一个index.html文件，则代理成功
+
+如果要关闭代理，仅仅注释掉profile的代理内容是不行的，在文件内加入以下内容
+
+unset http_proxy
+unset https_proxy
+unset ftp_proxy
+unset no_proxy
+并重新source一下
+
+source /etc/profile
