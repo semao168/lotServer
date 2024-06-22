@@ -56,7 +56,7 @@ function acce_check()
 function Install()
 {
   Welcome;
-  echo 'Preparatory work...'
+  echo '正在检测lotServer环境...';
   Uninstall;
   dep_check;
   [ -f /etc/redhat-release ] && KNA=$(awk '{print $1}' /etc/redhat-release)

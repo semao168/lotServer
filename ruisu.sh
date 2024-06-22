@@ -26,10 +26,10 @@ next() {
 clear
 
 next
-echo "Total amount of Mem  : $tram MB"
-echo "Total amount of Swap : $swap MB"
-echo "CPU model            : $cname"
-echo "Number of cores      : $cores"
+echo "总内存  : $tram MB"
+echo "总虚拟Swap : $swap MB"
+echo "CPU型号            : $cname"
+echo "核心数量      : $cores"
 next
 
 if [ "$CentOS_RHEL_version" -eq 6 ];then
@@ -37,13 +37,15 @@ rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-firmwa
 rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force
 number=$(cat /boot/grub/grub.conf | awk '$1=="title" {print i++ " : " $NF}'|grep '2.6.32-504'|awk '{print $1}')
 sed -i "s/^default=.*/default=$number/g" /boot/grub/grub.conf
-echo -e "\033[41;36m  5s later will reboot your server  \033[0m";
-sleep 5
+echo "内核安装完毕,3秒后将自动重启..."
+echo "重启后查看内核版本grubby --default-kernel"
+sleep 3
 reboot
 else
 rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-3.10.0-229.1.2.el7.x86_64.rpm  --nodeps --force
 grub2-set-default `awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg | grep '(3.10.0-229.1.2.el7.x86_64) 7 (Core)'|awk '{print $1}'`
-echo -e "\033[41;36m  5s later will reboot your server  \033[0m";
-sleep 5
+echo "内核安装完毕,3秒后将自动重启..."
+echo "重启后查看内核版本grubby --default-kernel"
+sleep 3
 reboot
 fi
