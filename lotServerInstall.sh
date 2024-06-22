@@ -144,7 +144,7 @@ function Uninstall()
 
 if [ $# == '1' ]; then
   [ "$1" == 'install' ] && KNK="$(uname -r)" && Install;
-  [ "$1" == 'uninstall' ] && Welcome && pause && Uninstall "Done.";
+  [ "$1" == 'uninstall' ] && Welcome  && Uninstall "Done.";
 elif [ $# == '2' ]; then
   [ "$1" == 'install' ] && KNK="$2" && Install;
 else
