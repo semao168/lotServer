@@ -43,16 +43,7 @@ echo "/usr/bin/sh /appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 ```
 
-## CentOS6和CentOS7 一键更换内核，一键安装锐速[lotServer][serverSpeeder ]
-
- 支持KVM VMWARE Hyper-v XEN 虚拟化技术
-
-CentOS6和CentOS7 一键更换内核，完成后会重启
+ > 腾讯TCPA单边加速
 ```
-wget --no-check-certificate https://blog.asuhu.com/sh/ruisu.sh
-bash ruisu.sh
-```
-CentOS6和CentOS更换内核完成后一键安装锐速[lotServer]  感谢V大
-```
-wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && chmod +x appex.sh && bash appex.sh install
+wget --no-check-certificate https://raw.githubusercontent.com/semao168/lotServer/TCPAspeed/tcpa.sh && chmod +x tcpa.sh && bash tcpa.sh
 ```
