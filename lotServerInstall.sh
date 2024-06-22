@@ -105,17 +105,18 @@ function Install()
     bash /appex/bin/serverSpeeder.sh status
   elif [ -f /appex/bin/lotServer.sh ]; then
  chmod +x /etc/rc.d/rc.local
- isExit=$(grep -q   "'/appex/bin/lotServer.sh restart'"  /etc/rc.local && echo "yes" || echo "no")
-  if [ "$isExit" = "yes" ]
-                then
-                 echo "自启动已经存在，请查看vi /etc/rc.local"
-                else
-                 echo "添加开机自启动成功...自启动配置请查看vi /etc/rc.local"
+isExit=$(grep -q   "su - root -c '/appex/bin/lotServer.sh restart'"  /etc/rc.local && echo "yes" || echo "no")
+FIND_FILE="/etc/rc.local"
+FIND_STR="/appex/bin/lotServer.sh restart"
+# 判断匹配函数，匹配函数不为0，则包含给定字符
+if [ `grep -c "$FIND_STR" $FIND_FILE` -ne '0' ];then
+echo "自启动已经存在，请查看vi /etc/rc.local"
+else
+echo "添加开机自启动成功...自启动配置请查看vi /etc/rc.local"
 cat>>/etc/rc.local<<EOF
 /appex/bin/lotServer.sh restart
 EOF
-
-                 fi
+fi
     bash /appex/bin/lotServer.sh status
   fi
   exit 0
