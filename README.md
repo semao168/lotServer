@@ -47,3 +47,8 @@ chmod +x /etc/rc.d/rc.local
 ```
 wget -O tcpa.sh "https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa.sh" && chmod +x tcpa.sh && ./tcpa.sh
 ```
+
+ > 默认80 443 8080端口 以下代码自己添加端口
+```
+vim /usr/local/storage/tcpav2/start.sh
+```
