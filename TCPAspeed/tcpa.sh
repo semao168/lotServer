@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 
 yum -y install epel-release net-tools bzip2
 
-curl -o /tmp/tcpa_packets_180619_1151.tar.bz2 https://raw.githubusercontent.com/semao168/lotServer/TCPAspeed/tcpa_packets_180619_1151.tar.bz2
+curl -o /tmp/tcpa_packets_180619_1151.tar.bz2 https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa_packets_180619_1151.tar.bz2
 cd /tmp/
 tar jxvf tcpa_packets_180619_1151.tar.bz2
 cd tcpa_packets
@@ -21,7 +21,7 @@ chmod +x /etc/rc.d/rc.local
 echo "/usr/local/storage/tcpav2/start.sh >> /etc/rc.d/rc.local
 
 
-rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/TCPAspeed/kernel-3.10.0-693.5.2.tcpa06.tl2.x86_64.rpm --force
+rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/kernel-3.10.0-693.5.2.tcpa06.tl2.x86_64.rpm --force
 echo "内核安装完毕,3秒后将自动重启..."
 echo "重启后安装自动完成,lsmod|grep tcpa查看是否开启成功."
 sleep 3
