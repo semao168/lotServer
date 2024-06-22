@@ -130,6 +130,7 @@ fi
 
 function Uninstall()
 {
+    echo '正在卸载lotServer环境...';
   AppexName="lotServer"
   [ -e /appex ] && chattr -R -i /appex >/dev/null 2>&1
   if [ -d /etc/rc.d ]; then
