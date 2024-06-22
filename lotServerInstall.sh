@@ -144,7 +144,7 @@ function Uninstall()
   [ -f /appex/bin/serverSpeeder.sh ] && AppexName="serverSpeeder" && bash /appex/bin/serverSpeeder.sh uninstall -f >/dev/null 2>&1
   rm -rf /appex >/dev/null 2>&1
   rm -rf /tmp/*${AppexName}* >/dev/null 2>&1
-  [ -n "$1" ] && echo -ne "$AppexName has been removed! \n" && echo "$1" && echo -ne "\n\n\n" && exit 0
+  [ -n "$1" ] && echo -ne "$AppexName 卸载完毕! \n" && echo "$1" && echo -ne "\n\n\n" && exit 0
 }
 
 if [ $# == '1' ]; then
