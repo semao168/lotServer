@@ -118,6 +118,12 @@ cat>>/etc/rc.local<<EOF
 EOF
 fi
     bash /appex/bin/lotServer.sh status
+    echo -e "使用方法\n
+    启动命令 /appex/bin/lotServer.sh start\n
+    停止加速 /appex/bin/lotServer.sh stop\n
+    状态查询 /appex/bin/lotServer.sh status\n
+    重新启动 /appex/bin/lotServer.sh restart\n
+"
   fi
   exit 0
 }
