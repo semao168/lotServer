@@ -104,6 +104,7 @@ function Install()
   if [ -f /appex/bin/serverSpeeder.sh ]; then
     bash /appex/bin/serverSpeeder.sh status
   elif [ -f /appex/bin/lotServer.sh ]; then
+    bash /appex/bin/lotServer.sh status
  chmod +x /etc/rc.d/rc.local
 isExit=$(grep -q   "su - root -c '/appex/bin/lotServer.sh restart'"  /etc/rc.local && echo "yes" || echo "no")
 FIND_FILE="/etc/rc.local"
@@ -117,7 +118,6 @@ cat>>/etc/rc.local<<EOF
 /appex/bin/lotServer.sh restart
 EOF
 fi
-    bash /appex/bin/lotServer.sh status
     echo -e "使用方法\n
     启动命令 /appex/bin/lotServer.sh start\n
     停止加速 /appex/bin/lotServer.sh stop\n
