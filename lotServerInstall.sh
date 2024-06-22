@@ -19,14 +19,14 @@ cd /tmp
 function root_check()
 {
 if [[ $EUID -ne 0 ]]; then
-  echo "Error:This script must be run as root!" 1>&2
+  echo "错误：此脚本必须以 root 身份运行！" 1>&2
   exit 1
 fi
 }
 
 function pause()
 {
-read -n 1 -p "Press Enter to Continue..." INP
+read -n 1 -p "按 Enter 继续..." INP
 if [ "$INP" != '' ] ; then
   echo -ne '\b \n'
   echo "";
@@ -63,18 +63,18 @@ function Install()
   [ -f /etc/os-release ] && KNA=$(awk -F'[= "]' '/PRETTY_NAME/{print $3}' /etc/os-release)
   [ -f /etc/lsb-release ] && KNA=$(awk -F'[="]+' '/DISTRIB_ID/{print $2}' /etc/lsb-release)
   KNB=$(getconf LONG_BIT)
-  [ ! -f /proc/net/dev ] && echo -ne "I can not find network device! \n\n" && exit 1;
+  [ ! -f /proc/net/dev ] && echo -ne "我找不到网络设备! \n\n" && exit 1;
   Eth_List=`cat /proc/net/dev |awk -F: 'function trim(str){sub(/^[ \t]*/,"",str); sub(/[ \t]*$/,"",str); return str } NR>2 {print trim($1)}'  |grep -Ev '^lo|^sit|^stf|^gif|^dummy|^vmnet|^vir|^gre|^ipip|^ppp|^bond|^tun|^tap|^ip6gre|^ip6tnl|^teql|^venet' |awk 'NR==1 {print $0}'`
-  [ -z "$Eth_List" ] && echo "I can not find the server pubilc Ethernet! " && exit 1
+  [ -z "$Eth_List" ] && echo "我找不到公共以太网服务器！ " && exit 1
   Eth=$(echo "$Eth_List" |head -n1)
-  [ -z "$Eth" ] && Uninstall "Error! Not found a valid ether. "
+  [ -z "$Eth" ] && Uninstall "错误！未找到有效的网卡. "
   Mac=$(cat /sys/class/net/${Eth}/address)
-  [ -z "$Mac" ] && Uninstall "Error! Not found mac code. "
+  [ -z "$Mac" ] && Uninstall "错误！未找到 mac 代码. "
   URLKernel='https://raw.githubusercontent.com/semao168/lotServer/main/lotServer.log'
   AcceData=$(wget --no-check-certificate -qO- "$URLKernel")
   AcceVer=$(echo "$AcceData" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |awk -F'/' '{print $NF}' |sort -nk 2 -t '_' |tail -n1)
   MyKernel=$(echo "$AcceData" |grep "$KNA/" |grep "/x$KNB/" |grep "/$KNK/" |grep "$AcceVer" |tail -n1)
-  [ -z "$MyKernel" ] && echo -ne "Kernel not be matched! \nYou should change kernel manually, and try again! \n\nView the link to get details: \n"$URLKernel" \n\n\n" && exit 1
+  [ -z "$MyKernel" ] && echo -ne "内核不匹配！ \n您应该手动更改内核，然后重试！ \n\n查看链接以获取详细信息: \n"$URLKernel" \n\n\n" && exit 1
 
   KNN=$(echo "$MyKernel" |awk -F '/' '{ print $2 }') && [ -z "$KNN" ] && Uninstall "Error! Not Matched. "
   KNV=$(echo "$MyKernel" |awk -F '/' '{ print $5 }') && [ -z "$KNV" ] && Uninstall "Error! Not Matched. "
@@ -84,7 +84,7 @@ function Install()
   mkdir -p "${AcceTmp}/bin/"
   mkdir -p "${AcceTmp}/etc/"
   wget --no-check-certificate -qO "${AcceTmp}/bin/${AcceBin}" "https://raw.githubusercontent.com/semao168/lotServer/main/${MyKernel}"
-  [ ! -f "${AcceTmp}/bin/${AcceBin}" ] && Uninstall "Download Error! Not Found ${AcceBin}. "
+  [ ! -f "${AcceTmp}/bin/${AcceBin}" ] && Uninstall "下载错误！未找到 ${AcceBin}. "
   Welcome;
   wget --no-check-certificate -qO "/tmp/lotServer.tar" "https://raw.githubusercontent.com/semao168/lotServer/main/lotServer.tar"
   tar -xvf "/tmp/lotServer.tar" -C /tmp
@@ -94,7 +94,7 @@ function Install()
 
   # 如果有自己搭建的或者api失效，这里修改成你自己的api
   wget --no-check-certificate -qO "${AcceTmp}/etc/apx.lic" "http://103.144.149.225/keygen.php?ver=${acce_ver}&mac=${Mac}"
-  [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "Error! I can not generate the Lic for you, Please try again later. "
+  [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "错误！我无法为您生成许可证，请稍后重试. "
   echo "Lic generate success! "
   sed -i "s/^accif\=.*/accif\=\"$Eth\"/" "${AcceTmp}/etc/config"
   sed -i "s/^apxexe\=.*/apxexe\=\"\/appex\/bin\/$AcceBin\"/" "${AcceTmp}/etc/config"
