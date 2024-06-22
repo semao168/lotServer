@@ -45,7 +45,7 @@ chmod +x /etc/rc.d/rc.local
 
  > 腾讯TCPA单边加速
 ```
-wget -O tcpa.sh "https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa.sh" && chmod +x tcpa.sh && ./tcpa.sh
+yum install wget -y && wget -O tcpa.sh "https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa.sh" && chmod +x tcpa.sh && ./tcpa.sh
 ```
 ***
 ##
@@ -56,4 +56,9 @@ wget -O tcpa.sh "https://raw.githubusercontent.com/semao168/lotServer/main/TCPAs
 vim /usr/local/storage/tcpav2/start.sh
 ```
 ***
+***
+## 使用方法
+- 启动命令 /usr/local/storage/tcpav2/start.sh
+- 停止加速 /usr/local/storage/tcpav2/stop.sh
+
 ***
