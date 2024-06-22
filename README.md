@@ -9,7 +9,7 @@ yum install wget -y && wget -O sshd.sh "https://raw.githubusercontent.com/semao1
 
  > 更换安装（更换锐速内核）
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/semao168/lotServer/main/ruisu.sh && chmod +x ruisu.sh && bash ruisu.sh
+wget -O ruisu.sh --no-check-certificate https://raw.githubusercontent.com/semao168/lotServer/main/ruisu.sh && chmod +x ruisu.sh && bash ruisu.sh
 ```
 
  ~~（脚本内置许可证的接口为我自己的接口了，有效期9999年那种 笑）~~

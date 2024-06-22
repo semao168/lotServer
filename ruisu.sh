@@ -41,7 +41,7 @@ echo -e "\033[41;36m  5s later will reboot your server  \033[0m";
 sleep 5
 reboot
 else
-rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-3.10.0-229.1.2.el7.x86_64.rpm --force
+rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-3.10.0-229.1.2.el7.x86_64.rpm  --nodeps --force
 grub2-set-default `awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg | grep '(3.10.0-229.1.2.el7.x86_64) 7 (Core)'|awk '{print $1}'`
 echo -e "\033[41;36m  5s later will reboot your server  \033[0m";
 sleep 5
