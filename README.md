@@ -45,5 +45,5 @@ chmod +x /etc/rc.d/rc.local
 
  > 腾讯TCPA单边加速
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa.sh && chmod +x tcpa.sh && bash tcpa.sh
+wget -O tcpa.sh "https://raw.githubusercontent.com/semao168/lotServer/main/TCPAspeed/tcpa.sh" && chmod +x tcpa.sh && ./tcpa.sh
 ```
