@@ -111,7 +111,9 @@ function Install()
                  echo "自启动已经存在，请查看vi /etc/rc.local"
                 else
                  echo "添加开机自启动成功...自启动配置请查看vi /etc/rc.local"
-                 echo "/appex/bin/lotServer.sh restart" >> /etc/rc.d/rc.local
+cat>>/etc/rc.local<<EOF
+/appex/bin/lotServer.sh restart
+EOF
 
                  fi
     bash /appex/bin/lotServer.sh status
