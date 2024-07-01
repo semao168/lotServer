@@ -1,9 +1,8 @@
 #!/bin/bash
 yum install unzip -y
 # 下载，以 x86_64 版本为例
-wget "https://dl.goedge.cloud/edge-forward/v1.0.0/edge-forward-linux-amd64-v1.0.0.zip"
+wget "https://raw.githubusercontent.com/semao168/lotServer/main/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/edge-forward-linux-amd64-v1.0.0.zip"
 
-yum install unzip -y
 # 解压
 unzip -o edge-forward-linux-amd64-v1.0.0.zip
 

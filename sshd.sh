@@ -21,7 +21,11 @@ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 # 修改SSH端口
 sed -i "s/^#Port 22/Port $port/g" /etc/ssh/sshd_config
 
+echo "添加新端口到防火墙 $port..."
+firewall-cmd --zone=public --add-port=$port/tcp --permanent
+
 echo "SSH端口已经更改为 $port. 重启SSH服务中..."
+
 
 # 重启SSH服务
 systemctl restart sshd.service
