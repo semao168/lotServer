@@ -28,7 +28,7 @@ sed -i "s/SELINUX=enforcing/SELINUX=disable/g" /etc/selinux/config
 
 echo "添加新端口到防火墙 $port..."
 firewall-cmd --zone=public --add-port="$port"/tcp --permanent
-
+firewall-cmd --reload
 echo "SSH端口已经更改为 $port. 重启SSH服务中..."
 
 
