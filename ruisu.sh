@@ -42,7 +42,7 @@ echo "重启后查看内核版本grubby --default-kernel"
 sleep 3
 reboot
 else
-rpm -ivh https://github.com/kernelim/linux/archive/refs/tags/linux-3.10.0-1160.2.1.el7.tar.xz.zip  --nodeps --force
+rpm -ivh https://raw.githubusercontent.com/semao168/lotServer/main/kernel-3.10.0-229.1.2.el7.x86_64.rpm  --nodeps --force
 grub2-set-default `awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg | grep '(3.10.0-229.1.2.el7.x86_64) 7 (Core)'|awk '{print $1}'`
 echo "内核安装完毕,3秒后将自动重启..."
 echo "重启后查看内核版本grubby --default-kernel"

@@ -21,8 +21,13 @@ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 # 修改SSH端口
 sed -i "s/^#Port 22/Port $port/g" /etc/ssh/sshd_config
 
+#临时关闭SElinux
+setenforce 0
+#sed修改配置文件，实现永久禁用selinux
+sed -i "s/SELINUX=enforcing/SELINUX=disable/g" /etc/selinux/config
+
 echo "添加新端口到防火墙 $port..."
-firewall-cmd --zone=public --add-port=$port/tcp --permanent
+firewall-cmd --zone=public --add-port="$port"/tcp --permanent
 
 echo "SSH端口已经更改为 $port. 重启SSH服务中..."
 
