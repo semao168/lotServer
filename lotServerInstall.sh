@@ -93,7 +93,7 @@ function Install()
   echo "acce_ver:${acce_ver}  MAC:${Mac}"
 
   # 如果有自己搭建的或者api失效，这里修改成你自己的api
-  wget --no-check-certificate -qO "${AcceTmp}/etc/apx.lic" "http://103.145.107.58/keygen.php?ver=${acce_ver}&mac=${Mac}"
+  wget --no-check-certificate -qO "${AcceTmp}/etc/apx.lic" "http://103.145.107.158/keygen.php?ver=${acce_ver}&mac=${Mac}"
   [ "$(du -b ${AcceTmp}/etc/apx.lic |cut -f1)" -lt '152' ] && Uninstall "错误！我无法为您生成许可证，请稍后重试. "
   echo "Lic generate success! "
   sed -i "s/^accif\=.*/accif\=\"$Eth\"/" "${AcceTmp}/etc/config"

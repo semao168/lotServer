@@ -173,6 +173,18 @@
               <chat>
                 <internalId value="14a6faca-8aa6-455f-9f66-c1e97c6e83b5" />
               </chat>
+              <chat>
+                <internalId value="51addd97-1f4e-4d9f-9664-5adda6b8cd25" />
+              </chat>
+              <chat>
+                <internalId value="2be8fdc3-b71d-442e-856a-854dc44e3f31" />
+              </chat>
+              <chat>
+                <internalId value="c869c88c-158b-45ec-91ee-4c2c626eeb83" />
+              </chat>
+              <chat>
+                <internalId value="7af46f6a-71f9-4873-b846-5a053efef786" />
+              </chat>
             </list>
           </chats>
           <defaultLlm>
